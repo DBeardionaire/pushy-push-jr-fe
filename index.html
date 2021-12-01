@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test Push Notifications</title>
+</head>
+<body>
+    <button onclick="showNotification()">Show a Notification</button>
+
+
+    <script type="text/javascript">
+        function showNotification() {
+            if (window.Notification) {
+                Notification.requestPermission(function (status) {
+                    console.log('Status: ', status);
+                    var n = new Notification('Title', { body: 'Lets Go Pushy Push Jr!' });
+                });
+            }
+            else {
+                alert('Your browser doesn\'t support notifications.');
+            }
+        }
+    </script>
+</body>
+</html>
