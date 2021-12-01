@@ -5,7 +5,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "ci:build": "next build && next export"
   },
   "dependencies": {
     "next": "12.0.4",

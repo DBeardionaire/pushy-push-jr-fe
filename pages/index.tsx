@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
@@ -39,7 +38,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Pushy Push JR!
-          <Image height="369" width="740" src="/PushyPushJRImage.png" alt="Pushy Push JR Image" />
+          <img height="369" width="740" src="/PushyPushJRImage.png" alt="Pushy Push JR Image" />
         </h1>
 
         <p className={styles.description}>
