@@ -6,6 +6,7 @@ public class Startup : FunctionsStartup
     {
         builder
             .AddGraphQLFunction()
-            .AddQueryType<Query>();
+            .AddQueryType<Query>()
+            .AddMutationType<Mutation>();
     }
 }
