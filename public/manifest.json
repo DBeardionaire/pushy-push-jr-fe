@@ -1,0 +1,18 @@
+{
+    "name": "Pushy Push Jr Progressive Web App",
+    "short_name": "Pushy Push Jr PWA",
+    "theme_color": "#ffffff",
+    "background_color": "#004740",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "icons/PushyPushJR144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }
+    ],
+    "splash_pages": null
+  }
