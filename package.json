@@ -10,6 +10,7 @@
     "ci:build": "next build && next export"
   },
   "dependencies": {
+    "firebase": "^9.5.0",
     "next": "12.0.4",
     "next-pwa": "^5.4.1",
     "react": "17.0.2",

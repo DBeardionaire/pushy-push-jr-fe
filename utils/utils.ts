@@ -12,7 +12,7 @@ export const enableNotifications = () => {
   }
 }
 
-export const sendNotification = (body: string, title: string = 'Pushy Push JR') => {
+export const onNotification = (body: string, title: string = 'Pushy Push JR') => {
   const isPushEnabled = enableNotifications()
 
   if (isPushEnabled) {
