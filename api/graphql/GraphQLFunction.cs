@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using HotChocolate.AzureFunctions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -9,7 +11,7 @@ public class GraphQLFunction
 {
     [FunctionName("GraphQLHttpFunction")]
     public Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "graphql/{**slug}")] 
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "graphql/{**slug}")]
         HttpRequest request,
         [GraphQL]
         IGraphQLRequestExecutor executor)

@@ -1,11 +1,20 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { enableNotifications, getWorker, sendNotification } from '../utils/utils'
+import { getFirebaseToken } from '../utils/firebase'
+import { enableNotifications, onNotification } from '../utils/utils'
 
 const Home: NextPage = () => {
   const [customMsg, setCustomMsg] = useState('')
+  const [firebaseToken, setFirebaseToken] = useState('')
+
+  useEffect(() => {
+    getFirebaseToken().then((token) => {
+      console.log(token)
+      setFirebaseToken(token ?? '')
+    })
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -26,8 +35,10 @@ const Home: NextPage = () => {
           Get started by enabling Notifications <button onClick={enableNotifications}>Enable Notification(s)</button>
         </p>
 
+        <p className={styles.description}>firebaseToken: {firebaseToken}</p>
+
         <div className={styles.grid}>
-          <a onClick={() => sendNotification('Lets Go Pushy Push Jr!')} className={styles.card}>
+          <a onClick={() => onNotification('Lets Go Pushy Push Jr!')} className={styles.card}>
             <h2>Send Test Push &rarr;</h2>
             <p>Send Test Push Notification from Pushy Push JR!.</p>
           </a>
@@ -36,7 +47,7 @@ const Home: NextPage = () => {
             <h2>Enter custom Push Message &rarr;</h2>
             <input type='text' onChange={(input) => setCustomMsg(input.currentTarget.value)} />
             <h3>{customMsg}</h3>
-            <button onClick={() => sendNotification(customMsg)}>Send IT!</button>
+            <button onClick={() => onNotification(customMsg)}>Send IT!</button>
           </a>
         </div>
       </main>

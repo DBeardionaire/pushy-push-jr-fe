@@ -1,0 +1,22 @@
+# https://stackoverflow.com/questions/50399170/what-bearer-token-should-i-be-using-for-firebase-cloud-messaging-testing
+
+# @name push
+POST https://fcm.googleapis.com/v1/projects/pushy-push-jr/messages:send
+Content-Type: application/json
+Authorization: Bearer ya29.a0ARrdaM-ejcWoOTL5a1GZ2etWX2wFSS_v5lRel_PsULEMyx3uM39bI2bcqqVpnvQqqphjFv6oPIi29EWinkBaIe-SbKkBmQce2cg4cWJgTzBsa4V4714UCfSmsxuGa1k9HjSw9er71VCMe7vMQcf5gyTtS3j7
+
+{
+  "message": {
+    // from FE get token
+    "token": "dKvf2yRR24FBqkc45iGCER:APA91bFpSKTThqAJUJ-mT6BNsgFdR8W11KTpQn5hbNAkcB-oj3BjdNMsTGSDxSpMa0TD0EpTid7RmKG-hl4RhIq3ksqAGFUNU1OAPm7ObmXulud2Ikb-CwYuwExNjehXerFlFGrtE_D_",
+    "notification": {
+      "title": "Background Message Title",
+      "body": "Background message body"
+    },
+    "webpush": {
+      "fcm_options": {
+        "link": "https://calm-ocean-0d0311210.azurestaticapps.net"
+      }
+    }
+  }
+}
