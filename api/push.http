@@ -20,3 +20,25 @@ Authorization: Bearer ya29.a0ARrdaM-ejcWoOTL5a1GZ2etWX2wFSS_v5lRel_PsULEMyx3uM39
     }
   }
 }
+
+###
+
+# @name pushy
+POST https://calm-ocean-0d0311210.azurestaticapps.net/api/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation setFire($firebaseKey: String!, $username: String) {
+    setFirebaseUserKey(
+      firebaseKey: $firebaseKey
+      username: $username
+    ) {
+      firebasePushUserKey
+      iPAddress
+      username
+    }
+  }",
+  "variables": {
+    "firebaseKey": "dnx5HBAlorRMD3x0NwjSu-:APA91bEn872YTMLqf3lG0C9cHmVZL0fEUAfFiArpCGrbAWiB9_x0ms09Hd4jRvv6Bon2JrwOn5_CpRMh-G3sVJhUKECTK0GY6xy-QDyev3vwDfl6q2QXB1HucgnvDYa-qZU75A18GNYr"
+  }
+}
