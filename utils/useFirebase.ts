@@ -37,7 +37,8 @@ const setFireMutation = `mutation setFire($firebaseKey: String!, $username: Stri
     }
   }`
 
-export const setFirekeyMutation = (firebaseKey: string, username?: string) => fetcher<any, { firebaseKey: string, username?: string }>(setFireMutation, { firebaseKey, username })()
+export const setFirekeyMutation = (firebaseKey: string, username?: string) =>
+    fetcher<any, { firebaseKey: string, username?: string }>(setFireMutation, { firebaseKey, username })()
 
 export const useFirekeyMutation = () => {
     const [firebaseToken, setFirebaseToken] = useState<string>()
@@ -62,3 +63,18 @@ export const useFirekeyMutation = () => {
 
     return firebaseToken
 }
+
+const adminPushAllMutation = `mutation pushAll($title: String!, $body: String!) {
+    sendGlobalPushNotification(
+      pushNotification: {
+        title: $title
+        body: $body
+      }
+    ) {
+      title
+      body
+    }
+  }`
+
+export const pushAllMutation = (title: string, body: string) =>
+    fetcher<any, { title: string, body: string }>(adminPushAllMutation, { title, body })()
