@@ -1,13 +1,31 @@
+using System.Collections.Generic;
+using System.Linq;
+using Google.Cloud.Firestore;
+
 namespace api;
 
 public partial class Query
 {
-    public IEnumerable<PushNotification> GetPushNotifications(int? limit) =>
-        (new List<PushNotification>() {
-            new PushNotification("Luke Skywalker", "I Am Your Father!"),
-            new PushNotification("Jar Jar Binks", "Is a Sith Lord!"),
-            new PushNotification("Mace Windu", "Is still alive and don't read anything into the color of his lightsaber!")
-        }).Take(limit ?? 10);
-}
+    public async Task<IEnumerable<FireBasePushUser>> GetPushyPushJrsAsync(
+        int? limit,
+        int? skip)
+    {
+        List<FireBasePushUser> list = new();
+        var collection = await FirebaseHelper.GetPushyPushUsersCollectionAsync();
 
-public record PushNotification(string Title, string Body);
+        var query = collection
+            .Offset(skip ?? 0)
+            .Limit(limit ?? 10);
+
+        // A CollectionReference is a Query, so we can just fetch everything
+        QuerySnapshot pushers = await query.GetSnapshotAsync();
+        foreach (DocumentSnapshot document in pushers.Documents)
+        {
+            // Do anything you'd normally do with a DocumentSnapshot
+            FireBasePushUser pusha = document.ConvertTo<FireBasePushUser>();
+            list.Add(pusha);
+        }
+
+        return list;
+    }
+}
