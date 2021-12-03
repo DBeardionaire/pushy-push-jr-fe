@@ -1,20 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-import { getFirebaseToken } from '../utils/firebase'
+import { useFirekeyMutation } from '../utils/useFirebase'
 import { enableNotifications, onNotification } from '../utils/utils'
 
 const Home: NextPage = () => {
   const [customMsg, setCustomMsg] = useState('')
-  const [firebaseToken, setFirebaseToken] = useState('')
-
-  useEffect(() => {
-    getFirebaseToken().then((token) => {
-      console.log(token)
-      setFirebaseToken(token ?? '')
-    })
-  }, [])
+  const firebaseToken = useFirekeyMutation()
 
   return (
     <div className={styles.container}>
