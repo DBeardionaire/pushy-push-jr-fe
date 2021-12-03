@@ -3,6 +3,7 @@
 # dotnet azure functions
 bin/
 obj/
+api/pushy*.json
 
 # PWA
 **/public/workbox-*.js

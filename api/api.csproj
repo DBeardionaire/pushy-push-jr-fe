@@ -17,6 +17,8 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="HotChocolate.AzureFunctions" Version="12.3.2" />
+    <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>

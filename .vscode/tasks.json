@@ -76,6 +76,67 @@
 			"command": "host start",
 			"isBackground": true,
 			"problemMatcher": "$func-dotnet-watch"
+		},
+		// docker build --pull --rm -f "api/Dockerfile.local" -t api:latest "api"
+		{
+			"label": "build (local docker image)",
+			"command": "docker",
+			"args": [
+				"build",
+				"--pull",
+				"--rm",
+				"-f",
+				"api/Dockerfile.local",
+				"-t",
+				"api:latest",
+				"api",
+			],
+			"type": "process",
+			// "dependsOn": "clean (functions)",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
+		},
+		// docker run --rm -it  -p 443:443/tcp -p 80:80/tcp api:latest
+		{
+			"label": "Run (local docker image)",
+			"command": "docker",
+			"args": [
+				"run",
+				"--rm",
+				"-it",
+				"-p",
+				"443:443/tcp",
+				"-p",
+				"80:80/tcp",
+				"api:latest",
+			],
+			"type": "process",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
+		},
+		{
+			"label": "Build and Run (local docker image)",
+			"command": "docker",
+			"args": [
+				"run",
+				"--rm",
+				"-it",
+				"-p",
+				"443:443/tcp",
+				"-p",
+				"80:80/tcp",
+				"api:latest",
+			],
+			"type": "process",
+			"dependsOn": "build (local docker image)",
+			"problemMatcher": "$msCompile",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
 		}
 	]
 }
