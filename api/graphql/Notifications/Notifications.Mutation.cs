@@ -17,9 +17,17 @@ public partial class Mutation
         {
             // Do anything you'd normally do with a DocumentSnapshot
             FireBasePushUser pusha = document.ConvertTo<FireBasePushUser>();
+
             Console.WriteLine(pusha.FirebasePushUserKey);
             Console.WriteLine(pusha.Username);
-            firekeyList.Add(pusha.FirebasePushUserKey);
+            if (!string.IsNullOrWhiteSpace(pusha.FirebasePushUserKey))
+            {
+                firekeyList.Add(pusha.FirebasePushUserKey);
+            }
+            else
+            {
+                firekeyList.Add(document.Id);
+            }
         }
 
         await SendPushNotifications(firekeyList, pushNotification);
